@@ -26,6 +26,8 @@ done
 dir="./public"
 assets="./assets"
 
+date=$(date '+%d-%m-%Y')
+
 # Check if $dir/index.html exists, if yes, skip this file
 if [[ "$dir" ]]; then
     echo "Directory exists. Deleting all..."
@@ -46,6 +48,7 @@ cp -r "${assets}"/revealjs "${dir}"
 # Insert link to images in HTML template
 cp "${assets}"/template.html "${dir}"/index.html
 echo -n "Creating HTML ... "
+gsed -i "17i Actualizado al: $date" "${dir}"/index.html
 mapfile -t slides < <(find "${dir}" -iname '*.png' | sort -r)
 for f in "${slides[@]}"; do
     f=$(basename "$f")
