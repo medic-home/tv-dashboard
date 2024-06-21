@@ -50,6 +50,6 @@ mapfile -t slides < <(find "${dir}" -iname '*.png' | sort -r)
 for f in "${slides[@]}"; do
     f=$(basename "$f")
     img="<section><img src='$f'></section>"
-    gsed -i "16i $img" "${dir}"/index.html
+    gsed -i "14i $img" "${dir}"/index.html
 done;
 echo "DONE"
